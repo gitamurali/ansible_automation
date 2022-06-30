@@ -12,3 +12,22 @@
                     ansible is highly secured and it doesn't have any Agent to take permissions to perform tasks on any applicaion or servers.
                     It uses yaml scripting language which works on key pair.
                     It uses push mechanism." > ansible_notes.txt
+
+      - name: create a file for host info
+        shell: touch ansible_host.txt
+
+      - name: Add content to the host file
+        shell: echo "What is hosts in ansible?
+                     Hosts is an ansible file,which tells ansible where to install all the files automatically." > ansible_host.txt
+
+       - name: Add content to host file regarding tasks
+         shell: echo "Tasks are smallest unit of action, by using playbook we can automate.
+           Ansible executes tasks in the same order they are defined inside a playbook." > ansible_host.txt
+
+
+         - name: what is vars in ansible?
+           shell: echo "Ansible uses variables to manage differences between systems. With Ansible, you can execute tasks and playbooks on multiple different systems with a single command. To represent the variations among those different systems, you can create variables with standard YAML syntax, including lists and dictionaries." > ansible_host.txt 
+
+
+         - name: what is a module
+           shell: echo "A module is a reusable, standalone script that Ansible runs on your behalf, either locally or remotely. Modules interact with your local machine, an API, or a remote system to perform specific tasks like changing a database password or spinning up a cloud instance." >  ansible_host.txt         
