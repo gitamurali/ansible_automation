@@ -1,0 +1,14 @@
+---
+ - hosts: localhost
+   tasks: 
+     - name: create a file to take anisible notes on it.
+       shell: touch ansible_notes.txt
+
+     - name: Add content to the file
+       shell: echo "What is Ansible? 
+                    Ansible is configuration management tool. 
+                    It is an open source IT automation engine which automates application deployment.
+                    we can update, modify,add ,delete files. 
+                    ansible is highly secured and it doesn't have any Agent to take permissions to perform tasks on any applicaion or servers.
+                    It uses yaml scripting language which works on key pair.
+                    It uses push mechanism." > ansible_notes.txt
