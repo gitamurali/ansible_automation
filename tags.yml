@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Getting instance facts
+      ec2_instance_info:
+        instance_ids: i-06ded7b3e8dac3d41
+        region: us-east-2
+      register: ec2_output
+
+        
+    - name: Adding some debug statement
+      debug:
+        msg: "{{ec2_output}}"
+
+    - name: getting instance id and printting
+      set_fact:
+        ec2_id: "{{ec2_output.instances[0].instance_id}}"
+        vol_id: "{{ec2_output.instances[0].block_device_mappings[0].ebs.volume_id}}"
+
+    - name: Add tags to ec2
+      ec2_tag:
+        region: us-east-2
+        resource: "{{ec2_id}}"
+        state: present
+        tags:
+          Name: ansible_ec2tag
+          env: devec2
+
+    - name: Add tags to ebs volumes
+      ec2_tag:
+        region: us-east-2
+        resource: "{{vol_id}}"
+          #resource: "{{ec2_output.instances[0].block_device_mappings[0].ebs.volume_id}}"
+        state: present
+        tags:
+          name: ansible_ebstag
+          env: devebs
+
+    - name: Add tags to AMI
+      ec2_tag:
+        region: us-east-2
+        resource: "{{ec2_output.instances[0].image_id}}"
+        state: present
+        tags:
+          name: ansible_amitag
+          env: devami
+      
