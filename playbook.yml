@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+    - name: my first playbook integrated through jenkins
+      shell: touch playbook1.yml
+
+    - name: enter data into the file
+      shell: echo "This is my first playbook. Awsome!!"
