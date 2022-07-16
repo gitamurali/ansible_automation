@@ -6,3 +6,6 @@
 
     - name: enter data into the file
       shell: echo "This is my first playbook. Awsome!!"
+
+    - name: enter data int the file about jenkins
+      shell: echo "this playbook is executing through jenkins"
